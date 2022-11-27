@@ -22,7 +22,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        flash()->addCreated('Hesap');
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:80'],
             'last_name' => ['required', 'string', 'max:80'],
@@ -42,6 +41,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
 
+        flash()->addCreated('Hesap');
         return User::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],

@@ -29,6 +29,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
+        ],[],[
+            'first_name' => 'Ad',
+            'last_name' => 'Soyad',
+            'email' => 'E-Posta'
         ])->validateWithBag('updateProfileInformation');
 
         if ($input['email'] !== $user->email &&
@@ -41,6 +45,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
+        flash()->addUpdated('Hesap');
     }
 
     /**
