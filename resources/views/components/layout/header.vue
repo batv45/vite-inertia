@@ -63,9 +63,6 @@ defineProps({
                                 </span>
                             </Link>
                             <div v-if="menu.child instanceof Array && menu.child.length" class="dropdown-menu">
-                                <a class="dropdown-item" href="./docs/">
-                                    Documentation
-                                </a>
                                 <Link v-for="child in menu.child"  class="dropdown-item"
                                       @click.prevent="child.action ? child.action() :  undefined;"
                                       :href="child.action ? undefined : (child.route ? route(child.route) : child.link)" >
