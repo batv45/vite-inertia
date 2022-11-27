@@ -1,4 +1,4 @@
-import {HomeIcon, InfoSquareIcon, LogoutIcon, TablerIconComponent, UserIcon} from "vue-tabler-icons";
+import {HomeIcon, InfoSquareIcon, LogoutIcon, PackagesIcon, PackageIcon, UserIcon} from "vue-tabler-icons";
 import {Inertia} from "@inertiajs/inertia";
 
 interface MenuType {
@@ -11,11 +11,13 @@ interface MenuDataType {
     link?: string,
     route?: string,
     action?: () => void
-    icon?: TablerIconComponent|null,
+    icon?: any,
     divider?: boolean
+    active?: boolean
+    child?: Array<MenuDataType>
 }
 
-export const useMenu = (route: any) : MenuType => ({
+export const useMenu = () : MenuType => ({
     userMenu : [
         {
             name: "Hesabım",
@@ -36,6 +38,26 @@ export const useMenu = (route: any) : MenuType => ({
             name: "Ana Sayfa",
             route: 'index',
             icon: HomeIcon
+        },
+        {
+            name: "Menu 2",
+            active: false,
+            icon: PackagesIcon,
+            child: [
+                {
+                    name: 'Menu 2-1',
+                    link: '#menu2-1',
+                    icon: PackageIcon,
+                },
+                {
+                    name: 'Menu 2-2',
+                    action: () =>  {
+                        console.log('baba')
+                        alert('baba menu 2')
+                    },
+                    icon: PackageIcon,
+                }
+            ],
         },
         {
             name: "Hakkında",
