@@ -64,6 +64,7 @@ defineProps({
                             </Link>
                             <div v-if="menu.child instanceof Array && menu.child.length" class="dropdown-menu">
                                 <Link v-for="child in menu.child"  class="dropdown-item"
+                                    :class="{'active': child.active === undefined ? (child.route ? route().current(child.route) : false) : child.active}"
                                       @click.prevent="child.action ? child.action() :  undefined;"
                                       :href="child.action ? undefined : (child.route ? route(child.route) : child.link)" >
                                     <span class="nav-link-icon d-md-none d-lg-inline-block" v-if="child.icon">
